@@ -1,4 +1,5 @@
 
 var server = require('./http');
+var router = require('./router');
 
-server.start();
+server.start(router.route);
