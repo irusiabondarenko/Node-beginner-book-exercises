@@ -1,6 +1,8 @@
 var exec = require("child_process").exec;
 
-function start(response) {
+exec("find /",
+	{ timeout: 10000, maxBuffer: 20000*1024 },
+	function start(response) {
 	console.log("Request handler 'start' was called.");
 
 	exec("ls -lah", function (error, stdout, stderr) {
@@ -8,7 +10,7 @@ function start(response) {
 		response.write(stdout);
 		response.end();
 	});
-}
+})
 
 
 function upload(response) {
